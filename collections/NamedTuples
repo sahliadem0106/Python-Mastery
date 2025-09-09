@@ -1,0 +1,77 @@
+from collections import namedtuple
+# lets define a namedTuple called person with fields 'name' , 'age' ,'job'
+person=namedtuple("person",["name","age","job"])
+#we create an instance of person :
+alice=person(name="Alice",age=25,job="engineer")
+print(alice)
+#look look Here, Person is a namedtuple type (like a class), and alice is an instance of it. You can create instances by passing values for each field, either by name or positionally.
+#---------------------------------------
+print("###################################################")
+print("############# accessing fields ####################")
+print("###################################################")
+#we can access fields in two ways :
+#by name and by index
+#1/ by name using instance.fieldname
+print("frst option")
+print(alice.name)
+print(alice.age)
+print(alice.job)
+#2/ by name using instance[fieldindex]
+print("scnd option")
+print(alice[0])
+print(alice[1])
+print(alice[2])
+#i liked the fieldname option it looks more clear
+print("###################################################")
+print("############# immutabilty #########################")
+print("###################################################")
+#Like regular tuples, namedtuple instances are immutable, meaning you can’t change their values after creation.
+#alice.age=26 ===> error
+#-------------------------------
+#To “modify” a namedtuple, you can create a new instance using the _replace() method:
+bob=alice._replace(age=30)
+print(bob)      #build a new instance based on an old one
+print(alice)
+print("###################################################")
+print("#############   creation  #########################")
+print("###################################################")
+#we have 3 ways to create a named tuple especialy defining the fields names
+#1 with lists
+car=namedtuple("car",["matricule","model","ageoffabrication"])
+#2 with space seperated string
+country=namedtuple("country","capital loc wealth")
+#3 with comma seperated string
+ai=namedtuple("ai","version,date,power")
+print("##########################################################")
+print("#############    Methods and Attributes   ################")
+print("##########################################################")
+#._fields returns a tuple of fieldnames
+print(car._fields)
+#._asdict converts a namedtuple to a dictionary
+print(alice._asdict())
+#_make(iterable) iterable can be a list or an iterable
+data=["bib","89","designer"]
+bib=person._make(data)  
+print(bib)
+#default values
+#by default named tuple doesn't support default value , but we can add them using defaults parametre
+witch=namedtuple("witch",["name","clan","age"],defaults=["witchy","slitheren","500"])
+watiwati=witch()
+print(watiwati)
+# namedtuple - Real-World Use Cases:
+# - Data records: store structured data like database rows (Employee(name, id, department))
+# - Configuration: represent fixed settings (Config(host, port, timeout))
+# - Math/Geometry: points, vectors, coordinates (Point(x, y, z))
+# - API responses: parse and organize structured API data
+# - Replacing tuples: more readable than plain tuples in lists of records
+
+# Connection to Other Data Structures:
+# - Counter: use namedtuple to represent items being counted (e.g., Person with count)
+# - Deque: store namedtuple objects in a deque for queue/stack-like processing
+# - Queue/Stack: use namedtuple for readable items (e.g., Order(id, customer, amount))
+
+# Things to Keep in Mind:
+# - Immutability: fields cannot be modified; use _replace() for updates
+# - Field names: must be valid Python identifiers (use underscores for multi-word names)
+# - Hashable: can be used as dictionary keys or in sets
+# - Use a class instead if you need methods, mutable attributes, or complex behavior
