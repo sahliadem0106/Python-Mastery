@@ -15,4 +15,5 @@ Focused practice on core Python concepts for building strong programming foundat
 - `collections/` : counter / defaultdict / NamedTuples , Queues(circular Queue , Priority Queue , simple Queue , deque : double ended queue ) 
 ## Goal:
 
-Master Python fundamentals to solve algorithmic problems and prepare for coding contests.
+Master Python fundamentals to solve algorithmic problems , prepare for coding contests and be a better data engineer.
+
